@@ -21,7 +21,7 @@ class Feed extends Component {
 
   // fica ouvindo atualizações e atualiza em realtime os dados na tela
   registerToSocket = () => {
-    const socket = io("http://localhost:3333");
+    const socket = io(api.defaults.baseURL);
 
     socket.on("post", newPost => {
       this.setState({ feed: [newPost, ...this.state.feed] });
@@ -60,7 +60,7 @@ class Feed extends Component {
               <img src={more} alt="Mais" />
             </header>
 
-            <img src={`http://localhost:3333/files/${post.image}`} alt="post" />
+            <img src={`${api.defaults.baseURL}files/${post.image}`} alt="post" />
 
             <footer>
               <div className="actions">
